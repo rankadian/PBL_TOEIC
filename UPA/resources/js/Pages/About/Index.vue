@@ -96,9 +96,12 @@ onMounted(() => {
       <!-- Header -->
      <header class="bg-white shadow-sm">
   <div class="container mx-auto flex items-center justify-between py-4 px-4">
-    <div class="text-2xl font-bold text-blue-900">
-      <a href="/">UPA</a>
-    </div>
+         <div class="w-14 h-14">
+    <a href="/">
+        <img src="https://upload.wikimedia.org/wikipedia/id/4/4a/Logo_Politeknik_Negeri_Malang.png"
+             alt="Logo Polinema" class="w-full h-full object-contain">
+    </a>
+</div>
 
     <nav class="hidden md:flex gap-8 text-blue-900 font-semibold">
       <a href="/" class="hover:text-blue-600">Home</a>

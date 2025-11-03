@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h3>Study Programs</h3>
-    <a href="{{ route('study-programs.create') }}" class="btn btn-primary mb-2">Add Study Program</a>
+    <a href="{{ route('study-programs.create') }}" class="btn btn-success mb-2">Add Study Program</a>
     @if (session('success')) <div class="alert alert-success">{{ session('success') }}</div> @endif
 
     <table class="table table-bordered">

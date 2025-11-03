@@ -15,7 +15,10 @@
 
 <div class="d-flex flex-column p-3 bg-white shadow-sm" style="width: 240px; min-height: 100vh; padding-bottom: 100px;">
     <!-- Logo -->
-    <h5 class="text-primary fw-bold mb-4">UPA</h5>
+    {{--  <h5 class="text-primary fw-bold mb-4">UPA</h5>  --}}
+    <img src="https://upload.wikimedia.org/wikipedia/id/4/4a/Logo_Politeknik_Negeri_Malang.png"
+     alt="Logo Polinema" class="mb-4" style="width: 50px; height: 50px;">
+
 
     <!-- General -->
     <small class="text-uppercase text-muted fw-bold mb-2">General</small>

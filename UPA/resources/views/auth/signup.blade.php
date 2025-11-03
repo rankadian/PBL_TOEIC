@@ -23,7 +23,11 @@
         <!-- Right Form Section -->
         <div class="flex flex-col justify-center px-8 py-12">
             <div class="max-w-md w-full mx-auto">
-                <h2 class="text-blue-700 font-bold text-lg">LOGOS</h2>
+                {{--  <h2 class="text-blue-700 font-bold text-lg">LOGOS</h2>
+                  --}}
+                                    <h2 class="text-blue-700 font-bold text-lg">
+  <img src="https://upload.wikimedia.org/wikipedia/id/4/4a/Logo_Politeknik_Negeri_Malang.png" alt="Logo Polinema" class="w-16 h-16 inline-block">
+</h2>
                 <h1 class="text-xl font-semibold mt-2">Sign Up For Free Tho!</h1>
 
                 <form action="{{ route('signup.store') }}" method="POST" class="mt-6 space-y-4">

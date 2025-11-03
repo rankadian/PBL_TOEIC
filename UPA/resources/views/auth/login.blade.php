@@ -23,8 +23,12 @@
         <!-- Right Form Section -->
         <div class="flex flex-col justify-center px-8 py-12">
             <div class="max-w-md w-full mx-auto">
-                <h2 class="text-blue-700 font-bold text-lg">LOGOS</h2>
-                <h1 class="text-xl font-semibold mt-2">Welcome Back!</h1>
+                {{--  <h2 class="text-blue-700 font-bold text-lg">LOGOS</h2>
+                  --}}
+                  <h2 class="text-blue-700 font-bold text-lg">
+  <img src="https://upload.wikimedia.org/wikipedia/id/4/4a/Logo_Politeknik_Negeri_Malang.png" alt="Logo Polinema" class="w-16 h-16 inline-block">
+</h2>
+                <h1 class="text-xl font-semibold mt-2">Welcome Back, To UPA !</h1>
 
                 {{--  <form action="{{ route('login') }}" method="POST" class="mt-6 space-y-4">
                       --}}
@@ -50,10 +54,10 @@
                         @enderror
                     </div>
 
-                    <div class="text-right">
+                    {{--  <div class="text-right">
                         <a href="{{ route('password.request') }}"
                             class="text-sm text-blue-600 hover:underline">Forgot Password?</a>
-                    </div>
+                    </div>  --}}
 
                     <div class="pt-4">
                         <button type="submit" class="w-full bg-gray-300 text-black py-3 rounded-md">
@@ -79,6 +83,8 @@
                     <span class="text-sm text-gray-400">Don’t have an account?</span>
                     <a href="{{ route('signup.index') }}" class="text-sm text-blue-600 hover:underline">Sign up</a>
                 </div>
+
+                
             </div>
         </div>
     </div>

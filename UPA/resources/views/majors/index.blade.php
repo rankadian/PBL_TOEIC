@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="container">
-    <h2>Daftar Jurusan</h2>
-    <a href="{{ route('majors.create') }}" class="btn btn-primary mb-3">Tambah Jurusan</a>
+    <h2>Majors</h2>
+    <a href="{{ route('majors.create') }}" class="btn btn-success mb-3">Add major</a>
 
     @if(session('success'))
     <div class="alert alert-success">{{ session('success') }}</div>
@@ -13,9 +13,9 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Nama</th>
-                <th>Kode</th>
-                <th>Aksi</th>
+                <th>Name</th>
+                <th>Code</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>

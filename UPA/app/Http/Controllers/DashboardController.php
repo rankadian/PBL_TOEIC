@@ -9,22 +9,39 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        // Data kartu
+        // Total Registrations (dari tabel toeic_registration)
         $totalRegistrations = DB::table('toeic_registration')->count();
-        $paidRegistrations = DB::table('toeic_registration')->where('status', 'paid')->count();
-        $certUploaded = DB::table('toeic_registration')->whereNotNull('ktp_path')->count();
 
-        // Data tabel
-        $registrations = DB::table('toeic_registration')->get();
+        // Paid Status (status = 'paid')
+        $paidRegistrations = DB::table('toeic_registration')
+            ->where('status', 'paid')
+            ->count();
 
-        // Data grafik bulanan
+        // Certificates Uploaded (menggunakan field certificate_path, bukan ktp_path)
+        $certUploaded = DB::table('toeic_scores')
+            ->whereNotNull('pdf')
+            ->count();
+
+        // Scores (jumlah yang memiliki skor)
+        $scores = DB::table('toeic_scores')
+            ->whereNotNull('score')
+            ->where('score', '!=', 0)
+            ->count();
+
+        // Majors
+        $majors = DB::table('majors')->count();
+
+        // Study Programs
+        $studyPrograms = DB::table('study_programs')->count();
+
+        // Registrations for chart (per bulan)
         $monthlyData = DB::table('toeic_registration')
             ->selectRaw('MONTH(registration_date) as month, COUNT(*) as total')
             ->groupBy('month')
             ->pluck('total', 'month')
             ->toArray();
 
-        // Buat array 12 bulan
+        // Buat array lengkap 12 bulan
         $monthlyCounts = [];
         for ($i = 1; $i <= 12; $i++) {
             $monthlyCounts[] = $monthlyData[$i] ?? 0;
@@ -34,9 +51,10 @@ class DashboardController extends Controller
             'totalRegistrations',
             'paidRegistrations',
             'certUploaded',
-            'registrations',
-            'monthlyCounts'
+            'monthlyCounts',
+            'scores',
+            'majors',
+            'studyPrograms'
         ));
     }
 }
-

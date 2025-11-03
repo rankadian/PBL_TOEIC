@@ -33,7 +33,7 @@ use App\Models\ToeicRegistration;
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name(name: 'home');
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/faq', [FaqController::class, 'index'])->name('faq');
 
@@ -97,13 +97,36 @@ Route::middleware(['auth', 'role:student'])->group(function () {
         Route::get('/{id}', [freeRegistController::class, 'show'])->name('show');
     });
 
-    Route::get('/paid-toeic/register', [PaidToeicController::class, 'create'])->name('paid-toeic.form');
-    Route::post('/paid-toeic/register', [PaidToeicController::class, 'store'])->name('paid-toeic.register');
+    // Route::get('/paid-toeic/register', [PaidToeicController::class, 'create'])->name('paid-toeic.form');
+    // Route::post('/paid-toeic/register', [PaidToeicController::class, 'store'])->name('paid-toeic.register');
 
+   Route::get('/paid-toeic/register', [PaidToeicController::class, 'create'])->name('paid-toeic.form');
+    Route::post('/paid-toeic/register', [PaidToeicController::class, 'store'])->name('paid-toeic.register');
         //  Route::get('/toeic-scores', [ToeicScoreController::class, 'index'])->name('toeic-scores.index');
 
              // TOEIC Scores - Student view only
+    // Route::get('/toeic-scores', [ToeicScoreController::class, 'studentScores'])->name('student.toeic-scores.index');
     Route::get('/toeic-scores', [ToeicScoreController::class, 'studentScores'])->name('student.toeic-scores.index');
+
+     Route::prefix('freeRegist')->name('freeRegist.')->group(function () {
+        Route::get('/', [freeRegistController::class, 'index'])->name('index');
+        Route::get('/create', [freeRegistController::class, 'create'])->name('create');
+        Route::post('/', [freeRegistController::class, 'store'])->name('store');
+        Route::get('/{id}', [freeRegistController::class, 'show'])->name('show');
+        Route::get('/{id}/edit', [freeRegistController::class, 'edit'])->name('edit');
+        Route::put('/{id}', [freeRegistController::class, 'update'])->name('update');
+        Route::delete('/{id}', [freeRegistController::class, 'destroy'])->name('destroy');
+        Route::get('/secondRegistration/{id}', [freeRegistController::class, 'createSecondRegistration'])->name('secondRegistration');
+        Route::get('/{id}/ktp', [freeRegistController::class, 'showKtp'])->name('showKtp');
+    });
+    //     Route::prefix('freeRegist')->name('freeRegist.')->group(function () {
+    //     Route::get('/secondRegistration/{id}', [freeRegistController::class, 'createSecondRegistration'])->name('secondRegistration');
+    //     Route::get('/{id}/ktp', [freeRegistController::class, 'showKtp'])->name('showKtp');
+    //     Route::get('/{id}/edit', [freeRegistController::class, 'edit'])->name('edit');
+    //     Route::put('/{id}', [freeRegistController::class, 'update'])->name('update');
+    //     Route::delete('/{id}', [freeRegistController::class, 'destroy'])->name('destroy');
+    // });
+
     // Route::get('/toeic-scores', [ToeicScoreController::class, 'index'])->name('toeic-scores.index');
     //     Route::prefix('toeic-scores')->name('toeic-scores.')->group(function () {
     //     Route::get('/', [ToeicScoreController::class, 'index'])->name('index');
@@ -148,13 +171,13 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     });
 
     // Free Registrations Management
-    Route::prefix('freeRegist')->name('freeRegist.')->group(function () {
-        Route::get('/secondRegistration/{id}', [freeRegistController::class, 'createSecondRegistration'])->name('secondRegistration');
-        Route::get('/{id}/ktp', [freeRegistController::class, 'showKtp'])->name('showKtp');
-        Route::get('/{id}/edit', [freeRegistController::class, 'edit'])->name('edit');
-        Route::put('/{id}', [freeRegistController::class, 'update'])->name('update');
-        Route::delete('/{id}', [freeRegistController::class, 'destroy'])->name('destroy');
-    });
+    // Route::prefix('freeRegist')->name('freeRegist.')->group(function () {
+    //     Route::get('/secondRegistration/{id}', [freeRegistController::class, 'createSecondRegistration'])->name('secondRegistration');
+    //     Route::get('/{id}/ktp', [freeRegistController::class, 'showKtp'])->name('showKtp');
+    //     Route::get('/{id}/edit', [freeRegistController::class, 'edit'])->name('edit');
+    //     Route::put('/{id}', [freeRegistController::class, 'update'])->name('update');
+    //     Route::delete('/{id}', [freeRegistController::class, 'destroy'])->name('destroy');
+    // });
 
     // Admin Registrations
     Route::prefix('adminRegist')->name('adminRegist.')->group(function () {
@@ -226,4 +249,13 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::post('/', [ToeicRegistrationController::class, 'store'])->name('toe-registration.store');
         Route::get('/success/{id}', [ToeicRegistrationController::class, 'success'])->name('toeic-registration.success');
     });
+<<<<<<< HEAD
 });
+=======
+
+});
+
+Route::prefix('admin')->group(function () {
+    Route::resource('toeic-scores', ToeicScoreController::class);
+});
+>>>>>>> 79757d161fde471857d0fb792c071065257dee5a

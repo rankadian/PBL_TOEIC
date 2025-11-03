@@ -2,11 +2,11 @@
 
 @section('content')
 <div class="container">
-    <h2>Daftar TOEIC PDFs</h2>
+    <h2>PDF Score </h2>
 
     {{-- Hanya admin yang bisa unggah --}}
     @if(auth()->check() && auth()->user()->role_name === 'admin')
-        <a href="{{ route('toeic-scores.create') }}" class="btn btn-primary mb-3">Unggah PDF</a>
+        <a href="{{ route('toeic-scores.create') }}" class="btn btn-success mb-3">Uploaded PDF</a>
     @endif
 
     @if(session('success'))
@@ -18,8 +18,8 @@
             <tr>
                 <th>ID</th>
                 <th>PDF</th>
-                <th>Diunggah Pada</th>
-                <th>Aksi</th>
+                <th>Uploaded At</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
