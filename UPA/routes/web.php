@@ -122,16 +122,11 @@ Route::middleware(['auth', 'role:student'])->group(function () {
 |--------------------------------------------------------------------------
 */
 Route::middleware(['auth', 'role:educational_staff'])->group(function () {
-     Route::prefix('educational-staff')->name('educational-staff.')->group(function () {
-        Route::get('/', [EducationalStaffController::class, 'index'])->name('index');
-        Route::get('/create', [EducationalStaffController::class, 'create'])->name('create');
-        Route::post('/', [EducationalStaffController::class, 'store'])->name('store');
-        Route::get('/{id}', [EducationalStaffController::class, 'show'])->name('show');
-        Route::get('/{id}/edit', [EducationalStaffController::class, 'edit'])->name('edit');
-        Route::put('/{id}', [EducationalStaffController::class, 'update'])->name('update');
-        Route::delete('/{id}', [EducationalStaffController::class, 'destroy'])->name('destroy');
-        Route::get('/{id}/payment', [EducationalStaffController::class, 'payment'])->name('payment');
-
+    Route::prefix('educational-staff-registration')->group(function () {
+        Route::get('/', [EducationalStaffRegistrationController::class, 'index'])->name('educational-staff-registration.index');
+        Route::get('/create', [EducationalStaffRegistrationController::class, 'create'])->name('educational-staff-registration.create');
+        Route::post('/', [EducationalStaffRegistrationController::class, 'store'])->name('educational-staff-registration.store');
+        Route::get('/{id}', [EducationalStaffRegistrationController::class, 'show'])->name('educational-staff-registration.show');
     });
 });
 
@@ -174,15 +169,15 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     });
 
     // Educational Staff Management
-    // Route::prefix('educational-staff')->name('educational-staff.')->group(function () {
-    //     Route::get('/', [EducationalStaffController::class, 'index'])->name('index');
-    //     Route::get('/create', [EducationalStaffController::class, 'create'])->name('create');
-    //     Route::post('/', [EducationalStaffController::class, 'store'])->name('store');
-    //     Route::get('/{id}', [EducationalStaffController::class, 'show'])->name('show');
-    //     Route::get('/{id}/edit', [EducationalStaffController::class, 'edit'])->name('edit');
-    //     Route::put('/{id}', [EducationalStaffController::class, 'update'])->name('update');
-    //     Route::delete('/{id}', [EducationalStaffController::class, 'destroy'])->name('destroy');
-    // });
+    Route::prefix('educational-staff')->name('educational-staff.')->group(function () {
+        Route::get('/', [EducationalStaffController::class, 'index'])->name('index');
+        Route::get('/create', [EducationalStaffController::class, 'create'])->name('create');
+        Route::post('/', [EducationalStaffController::class, 'store'])->name('store');
+        Route::get('/{id}', [EducationalStaffController::class, 'show'])->name('show');
+        Route::get('/{id}/edit', [EducationalStaffController::class, 'edit'])->name('edit');
+        Route::put('/{id}', [EducationalStaffController::class, 'update'])->name('update');
+        Route::delete('/{id}', [EducationalStaffController::class, 'destroy'])->name('destroy');
+    });
     // TOEIC Scores Management
     // Route::prefix('toeic-scores')->name('toeic-scores.')->group(function () {
     //     Route::get('/', [ToeicScoreController::class, 'index'])->name('index');
@@ -231,9 +226,4 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::post('/', [ToeicRegistrationController::class, 'store'])->name('toe-registration.store');
         Route::get('/success/{id}', [ToeicRegistrationController::class, 'success'])->name('toeic-registration.success');
     });
-    
-});
-
-Route::prefix('admin')->group(function () {
-    Route::resource('toeic-scores', ToeicScoreController::class);
 });

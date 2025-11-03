@@ -55,4 +55,12 @@ class m_user extends Authenticatable
     {
         return $this->hasMany(ToeicScore::class, 'user_id');
     }
+
+    // Di dalam App\Models\User.php
+
+    public function getRoleAttribute()
+    {
+        return $this->role_name;
+    }
+
 }
