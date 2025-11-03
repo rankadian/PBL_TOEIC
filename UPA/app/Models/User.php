@@ -75,20 +75,17 @@ class User extends Authenticatable
         return $this->belongsTo(Major::class);
     }
 
-<<<<<<< HEAD
     // Di dalam App\Models\User.php
 
     public function getRoleAttribute()
     {
         return $this->role_name;
     }
-=======
     // App\Models\ToeicScore.php
 
 public function user()
 {
     return $this->belongsTo(User::class);
 }
->>>>>>> 79757d161fde471857d0fb792c071065257dee5a
 
 }

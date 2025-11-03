@@ -99,10 +99,7 @@ class FreeRegistController extends Controller
         return view('freeregist.show', compact('registration'));
     }
 
-<<<<<<< HEAD
-=======
     // Method untuk memproses pendaftaran kedua kalinya
->>>>>>> 79757d161fde471857d0fb792c071065257dee5a
     public function createSecondRegistration(Request $request, $id)
     {
         $registration = ToeicRegistration::find($id);
@@ -120,30 +117,28 @@ class FreeRegistController extends Controller
         return redirect()->route('freeRegist.index')->with('success', 'Pendaftaran kedua berhasil');
     }
 
-<<<<<<< HEAD
-    public function edit($id)
-    {
-        if (!Auth::check()) {
-            return redirect()->route('login');
-        }
+    // public function edit($id)
+    // {
+    //     if (!Auth::check()) {
+    //         return redirect()->route('login');
+    //     }
 
-        $user = Auth::user();
-        $nim = $user->nim;
+    //     $user = Auth::user();
+    //     $nim = $user->nim;
 
-        if (Auth::user()->role_name !== 'student') {
-            abort(403, 'Unauthorized');
-        }
+    //     if (Auth::user()->role_name !== 'student') {
+    //         abort(403, 'Unauthorized');
+    //     }
 
-        $registration = ToeicRegistration::where('id', $id)->where('nim', $nim)->first();
+    //     $registration = ToeicRegistration::where('id', $id)->where('nim', $nim)->first();
 
-        if (!$registration) {
-            return redirect()->route('freeRegist.index')->with('error', 'Registration not found.');
-        }
+    //     if (!$registration) {
+    //         return redirect()->route('freeRegist.index')->with('error', 'Registration not found.');
+    //     }
 
-        return view('freeregist.edit', compact('registration'));
-    }
+    //     return view('freeregist.edit', compact('registration'));
+    // }
 
-=======
     // Show the edit registration form
     // public function edit($id)
     // {
@@ -252,7 +247,6 @@ public function edit($id)
 }
 
     // Update the registration data
->>>>>>> 79757d161fde471857d0fb792c071065257dee5a
     public function update(Request $request, $id)
     {
         if (!Auth::check()) {

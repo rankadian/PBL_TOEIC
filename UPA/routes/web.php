@@ -249,13 +249,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::post('/', [ToeicRegistrationController::class, 'store'])->name('toe-registration.store');
         Route::get('/success/{id}', [ToeicRegistrationController::class, 'success'])->name('toeic-registration.success');
     });
-<<<<<<< HEAD
-});
-=======
-
 });
 
 Route::prefix('admin')->group(function () {
     Route::resource('toeic-scores', ToeicScoreController::class);
 });
->>>>>>> 79757d161fde471857d0fb792c071065257dee5a
