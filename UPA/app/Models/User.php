@@ -14,7 +14,7 @@ class User extends Authenticatable
 
     protected $table = 'user'; // <- sudah benar
 
-//    protected $fillable = [
+    //    protected $fillable = [
 //     'username',
 //     'email',
 //     'password',
@@ -32,25 +32,25 @@ class User extends Authenticatable
 //     'has_registered_free_toeic',
 // ];
 
-protected $fillable = [
-    'username',
-    'email',
-    'password',
-    'role_name',
-    'role_description',
-    'nim',
-    'name',
-    'nik',
-    'phone',
-    'origin_address',
-    'current_address',
-    'study_program_id',
-    'major_id',
-    'campus',
-    'has_registered_free_toeic',
-    'status',
-    'rejection_reason',
-];
+    protected $fillable = [
+        'username',
+        'email',
+        'password',
+        'role_name',
+        'role_description',
+        'nim',
+        'name',
+        'nik',
+        'phone',
+        'origin_address',
+        'current_address',
+        'study_program_id',
+        'major_id',
+        'campus',
+        'has_registered_free_toeic',
+        'status',
+        'rejection_reason',
+    ];
 
 
 
@@ -75,6 +75,12 @@ protected $fillable = [
         return $this->belongsTo(Major::class);
     }
 
+    // Di dalam App\Models\User.php
+
+    public function getRoleAttribute()
+    {
+        return $this->role_name;
+    }
     // App\Models\ToeicScore.php
 
 public function user()

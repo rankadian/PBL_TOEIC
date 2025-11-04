@@ -74,19 +74,22 @@
                     class="bg-blue-500 text-white py-2 px-4 rounded w-full sm:w-auto">
                     Lengkapi Pendaftaran
                 </a>
+            {{-- @can('update', $registration)
+                <a href="{{ route('freeRegist.edit', $registration->id) }}">Edit</a>
+            @endcan --}}
 
-                @if (!$registration->is_second_registration)
-                    <form id="secondRegistrationForm"
-                        action="{{ route('freeRegist.secondRegistration', $registration->id) }}" method="POST">
-                        @csrf
-                        <button type="button" id="confirmBtn"
-                            class="bg-blue-500 text-white py-2 px-4 rounded w-full sm:w-auto">
-                            Daftar untuk Kedua Kalinya
-                        </button>
-                    </form>
-                @endif
-            </div>
+            @if (!$registration->is_second_registration)
+                <form id="secondRegistrationForm" action="{{ route('freeRegist.secondRegistration', $registration->id) }}"
+                    method="POST">
+                    @csrf
+                    <button type="button" id="confirmBtn"
+                        class="bg-blue-500 text-white py-2 px-4 rounded w-full sm:w-auto">
+                        Daftar untuk Kedua Kalinya
+                    </button>
+                </form>
+            @endif
         </div>
+    </div>
     </div>
 
     <!-- Modal for KTP -->
